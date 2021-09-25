@@ -1,0 +1,264 @@
+---
+title: "Discrete Mathematics: Logic and Set Theory"
+subtitle: "<br/>Class 1"
+author: "Adolfo Alvarez"
+date: "10/10/2018"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    css: xaringan-themer.css
+---
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+mono_accent(
+  base_color = "#004d67",
+  header_font_google = google_font("Muli"),
+  text_font_google   = google_font("Muli", "300", "300i"),
+  code_font_google   = google_font("Droid Mono")
+)
+```
+# Who am I?
+
+---
+# Who are you?
+
+---
+# What will be we doing together the next weeks?
+
+--
+Mostly learn together!
+--
+
+- Propositions, logical connectives, truth tables, and tautologies.
+- Inference, checking the deductibility of requested and reliability schemes
+- Predicate calculus
+- Validation requested in the predicate calculus using Venn diagrams
+- Set theory: definitions, acting on sets, the power set, the Cartesian product
+- Binary relations: ways to write binary relations (among others matrices and graphs), actions, properties of relationships
+
+---
+#All of this will lead us to probabilities! (the second part of this Discrete Mathematics course)
+
+---
+# Evaluation
+
+- One test at the end of the logic module. (19/12)
+- One test at the end of the probability module. (06/02)
+- A replacement test (logic + probability) at the end of two modules. (13/02)
+
+
+---
+#Let's start
+
+---
+# Propositions
+
+The basic concept of propositional logic is the proposition. A proposition is a sentence that
+can be assigned a truth value: true or false .
+Some simple examples are:
+
+
+- The Sun is hot.
+- The Earth is made of cheese.
+- 3 plus 3 equals 33.
+- The 999-th decimal digit of the number π is 9.
+
+---
+# Propositions
+Here are some sentences that are not propositions (why?):
+
+- Are you bored?
+- Please, don’t go away!
+- x is an integer.
+- This sentence is false.
+
+---
+# Propositional logical connectives
+The propositions above are very simple. They have no logical structure, so we call them primi-
+tive propositions. From primitive propositions one can form compound ones by using logical
+connectives. The most commonly used connectives are:
+
+- not, called negation, denoted by $\neg$
+- and, called conjunction, denoted by $\wedge$ (or sometimes, by $\&$)
+- or, called disjunction, denoted by $\lor$
+- if...then..., called implication, or conditional, denoted by $\to$
+- ... if and only if ... , called biconditional, denoted by $\leftrightarrow$
+
+---
+# Propositional logical connectives
+
+The proposition $A \to B$ means: If $A$ is true, then $B$ must be true.
+
+When this proposition is true? When is false?
+
+--
+
+"If you eat your vegetables, I will give you ice cream"
+
+---
+# Propositional logical connectives
+
+Other ways to "read" $A \to B$
+
+- A implies B
+- If A (then) B.
+- A only if B.
+- B if A.
+- B whenever A.
+- A is sufficient for B. (Meaning: the truth of A is sufficient for the truth of B.)
+- B is necessary for A. (Meaning: the truth of B is necessary for A to be true.)
+---
+## Truth tables
+How about the truth value of a compound proposition? It can be calculated from the truth
+values of the components (in much the same way as we can calculate the value of the algebraic
+expression $A × (B − C) + B∕A$ as soon as we know the values of $A$‚ $B$‚ $C$) by following the rules
+of “propositional arithmetic”:
+
+- The proposition $\neg A$ is true if and only if the proposition $A$ is false.
+- The proposition $A \wedge B$ is true if and only if both $A$ and $B$ are true.
+- The proposition $A \lor B$ is true if and only if either of $A$ or $B$ (possibly both) is true.
+- The proposition $A \to B$ is true if and only if $A$ is false or $B$ is true, i.e. if the truth of $A$ implies the truth of $B$.
+- The proposition $A \leftrightarrow B$ is true if and only if A and B have the same truth values.
+
+---
+## Truth tables
+
+- We can systematize these rules in kinds of “multiplication tables”. 
+- We denote the value true by T and the value false by F. 
+- Another common notation, particularly used in computer science, is to denote true by 1 and false by 0.
+
+| $p$ | $\neg p$ |
+|---|---|
+|T|F|
+|F|T|
+
+.
+
+| $p$ | $q$ | $p \wedge q$ | $p \lor q$ | $p \to q$ | $p \leftrightarrow q$|
+|---|---|---|---|---|---|
+| T | T | T | T | T | T|
+| T | F | F | T | F | F|
+| F | T | F | T | T | F|
+| F | F | F | F | T | T|
+
+---
+## Truth tables
+
+- We can systematize these rules in kinds of “multiplication tables”. 
+- We denote the value true by T and the value false by F. 
+- Another common notation, particularly used in computer science, is to denote true by 1 and false by 0.
+
+| $p$ | $\neg p$ |
+|---|---|
+|1|0|
+|0|1|
+
+.
+
+| $p$ | $q$ | $p \wedge q$ | $p \lor q$ | $p \to q$ | $p \leftrightarrow q$|
+|---|---|---|---|---|---|
+| 1 | 1 | 1 | 1 | 1 | 1|
+| 1 | 0 | 0 | 1 | 0 | 0|
+| 0 | 1 | 0 | 1 | 1 | 0|
+| 0 | 0 | 0 | 0 | 1 | 1|
+
+---
+# Example
+
+Let's say $p$ is "0.5 is an integer", q is "2 is less than 3", and r is "The Moon is larger than the Sun”, let's evaluate the following proposition:
+
+$(p \lor \neg (q \wedge  \neg r)) \to  \neg \neg r$
+
+How do we start?
+
+--
+
+$(F \lor \neg (T \wedge  \neg F)) \to  \neg \neg F$
+
+
+--
+
+$(F \lor \neg (T \wedge  T)) \to  \neg T$ =
+
+--
+
+$(F \lor \neg T) \to  F$ = 
+
+--
+
+$(F \lor F) \to  F$ = 
+
+--
+
+$F \to  F$ = 
+
+--
+
+$T$.
+
+---
+# Example
+We can use the truth tables to evaluate every possible case for p, q, r:
+
+| $p$ | $q$ | $r$ | $\neg r$ | $\neg \neg r$ | $q \wedge \neg r$ | $\neg(q \wedge \neg r)$ | $p \lor \neg(q \wedge \neg r)$ | $(p \lor \neg(q \wedge \neg r)) \to \neg \neg r$ |
+|---|---|---|---|---|---|---|---|---|
+|T|T|T|F|T|F|T|T|T|
+|T|T|F|T|F|T|F|T|F|
+|T|F|T|F|T|F|T|T|T|
+|T|F|F|T|F|F|T|T|F|
+|F|T|T|F|T|F|T|T|T|
+|F|T|F|T|F|T|F|F|T|
+|F|F|T|F|T|||||
+|F|F|F|T||||||
+
+---
+## Let's practise
+
+If $A$ and $B$ are true propositions and $C$ and $D$ are false ones, determine the truth values of the following compound propositions:
+
+a) $A \wedge (\neg B \lor C)$
+
+b) $\neg ( \neg A \lor D) \to \neg B$
+
+c) $\neg (\neg D \wedge (B \to \neg A)$
+
+d) $(C \to A) \to D$
+
+e) $C \to (A \to D)$
+
+f) $\neg (C \to A) \lor (C \to D)$
+
+g) $(A \to \neg A) \lor (C \leftrightarrow \neg B )$
+
+---
+## Let's practise 
+Write each of the following composite propositions in a symbolic form by identifying its atomic propositions and logical structure. Then determine its truth value.
+
+a) The Sun is hot and if the Earth is larger than Jupiter then there is life on Jupiter.
+
+b) If the Sun rotates around the Earth or the Earth rotates around the Moon then the Sun rotates around the Moon.
+
+c) The Moon does not rotate around the Earth if the Sun does not rotates around the Earth and the Earth does not rotate around the Moon.
+
+d) The Earth rotate around itself only if the Sun rotates around the Earth or the Moon does not rotate around the Earth.
+
+e) The Earth rotates around itself if and only if the Sun does not rotate around itself or the Moon does not rotate around itself.
+
+---
+## Let's practise 
+Determine the truth value of the proposition A in each of the following cases:
+
+a) $B$ and $B \to A$ are true.
+
+b) $A \to B$ is true and $B$ is false
+
+c) $\neg B$ and $A \lor B$ are true.
+
+d) Each of $B \to  \neg A$, $\neg B \to  \neg C$ and $C$ is true.
+
+e) Each of $\neg C \wedge  B$, $C \to  (A \lor B)$, and $\neg (A \lor C) \to  C$ is true.
+(Hint: consider cases for the truth of $B$ and $C$.)

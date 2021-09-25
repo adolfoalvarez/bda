@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Beyond data analysis: the other uses of R in academia</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="dr. Adolfo Alvarez   Collegium da Vinci - Analyx" />
+    <script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-1.3.1/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+    <script src="libs/pymjs-1.3.2/pym.v1.js"></script>
+    <script src="libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="img.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Beyond data analysis: the other uses of R in academia
+### dr. Adolfo Alvarez <br/> Collegium da Vinci - Analyx
+### Poznan University of Life Sciences<br/>29/03/2019
+
+---
+
+class: center, middle
+
+# Three questions to 
+# break the ice
+
+???
+- How many of you use R for research?
+- How many of you use R for other uses?
+- How many of you use LateX?
+
+---
+# R is a great tool for research! (Especially in statistics!)
+
+Why to use R for research:
+
+- Reproducibility
+
+- Quality (&gt;10k packages)
+
+- Flexibility
+
+- Community
+
+---
+![](img/not.png)
+
+---
+background-image: url("img/intro1b.png")
+background-size: contain
+
+---
+background-image: url("img/intro1.png")
+background-size: contain
+
+
+---
+background-image: url("img/intro2.png")
+background-size: contain
+
+---
+#Other uses of R in academia
+
+--
+- Presentations (Classes, meetings, conferences, seminars, ...)
+
+--
+- Reporting (journal articles, thesis, books, cv, cover letters, grants, ...)
+
+--
+- Teaching support (Classes, tests, exams, ...)
+
+---
+# Software for academic writing
+
+--
+- Most of us started with Word processors (Ms Word, Libreoffice, )
+  - Formatted text
+
+--
+- LaTeX is the standard in academia
+  - Plain text with markup tagging (i.e. \textbf{Bold text})
+
+--
+- Markdown
+  - Plain text with lightweight markup tagging (i.e. `**text**`)
+
+--
+- Markdown flavours 
+  - i.e. Pandoc for extended features such as tables, figures, quotes
+
+--
+
+&gt; A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. – John Gruber
+
+---
+# The R flavoured Markdown
+
+- R Markdown uses Pandoc
+- Integrated with RStudio
+- Integrated with R 
+- Same notation, different outputs: .html, .docx, .pdf, .odt, etc. 
+
+---
+# Rmarkdown notation
+
+You can use inline format for text:
+
+- Italic with `_text_` or `*text*`: *Italic text*
+- Bold with `**text**`: **Bold text**
+- Hyperlinks with `[text](link)`, e.g., [KMMiS](http://merlin.up.poznan.pl/kmmis2/).
+- Images with `![Alternative text](Path/to/image)`
+
+![KMMiS](img/liczydlo2.jpg). 
+
+&lt;!-- --- --&gt;
+&lt;!-- .right[![KMMiS](img/liczydlo2.jpg)] --&gt;
+&lt;!-- .left[![KMMiS](img/liczydlo2.jpg)] --&gt;
+&lt;!-- .center[![KMMiS](img/liczydlo2.jpg)] --&gt;
+&lt;!-- .top[.right[![KMMiS](img/liczydlo2.jpg)]] --&gt;
+&lt;!-- .right[![KMMiS](img/liczydlo2.jpg)] --&gt;
+
+---
+# Rmarkdown notation
+
+- Section headers can be written after a number of pound signs, e.g.,
+
+```markdown
+# First-level header
+
+## Second-level header
+
+### Third-level header
+```
+# First-level header
+
+## Second-level header
+
+### Third-level header
+
+---
+# Lists 
+
+Unordered list items start with `*`, `-`, or `+`, and you can nest one list within another list by indenting the sub-list, e.g.,
+
+```markdown
+- one item
+- one item
+- one item
+    - one more item
+    - one more item
+    - one more item
+```
+
+The output is:
+
+- one item
+- one item
+- one item
+    - one more item
+    - one more item
+    - one more item
+
+---
+#Lists 
+
+Ordered list items start with numbers (you can also nest lists within lists), e.g.,
+
+```markdown
+1. the first item
+2. the second item
+3. the third item
+    - one unordered item
+    - one unordered item
+```
+
+The output does not look too much different with the Markdown source:
+
+1. the first item
+2. the second item
+3. the third item
+    - one unordered item
+    - one unordered item
+    
+---
+# Quotes 
+
+Blockquotes are written after `&gt;`, e.g.,
+
+```markdown
+&gt; "I thoroughly disapprove of duels. If a man should challenge me, 
+&gt; I would take him kindly and forgivingly by the hand 
+&gt; and lead him to a quiet place and kill him."
+&gt;
+&gt; --- Mark Twain
+```
+
+&gt; "I thoroughly disapprove of duels. If a man should challenge me,
+  I would take him kindly and forgivingly by the hand and lead him
+  to a quiet place and kill him."
+&gt;
+&gt; --- Mark Twain
+
+---
+# Formulas
+
+- Equations can be written using LaTeX notation 
+- Inline equations should be enclosed into dollar signs:
+  - You write `$\int_{1}^{x}(2-u^2)du$`
+  - You get `\(\int_{1}^{x}(2-u^2)du\)`
+- Display style should be enclosed into double dollar signs:
+  - You write ` `$$\int_{1}^{x}(2-u^2)du$$` `
+  - You get `$$\int_{1}^{x}(2-u^2)du$$`
+  
+---
+# R code
+
+- This is the best advantage to write your documents in R Markdown: Your report is directly connected to your data analysis!
+
+````markdown
+```{r}
+x &lt;- rnorm(100)
+summary(x)
+```
+````
+
+### Output:
+
+
+```r
+x &lt;- rnorm(100)
+summary(x)
+```
+
+```
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -1.76804 -0.67641 -0.11065 -0.02557  0.56810  2.64731
+```
+
+---
+.pull-left[
+
+### Input: 
+
+````markdown
+```{r}
+y &lt;- rnorm(100)
+plot(x,y)
+```
+````
+]
+.pull-right[
+
+### Output:
+
+
+```r
+y &lt;- rnorm(100)
+plot(x,y)
+```
+
+![](seminar_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+]
+
+---
+# Tables
+
+You can use the kable and kableExtra packages for tables:
+
+.pull-left[
+
+### Input: 
+
+````markdown
+```{r}
+library(knitr)
+library(kableExtra)
+dt &lt;- mtcars[1:5, 1:6]
+dt %&gt;%
+  kable()
+```
+````
+]
+.pull-right[
+
+### Output:
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; drat &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; wt &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.620 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.875 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.85 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.320 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.215 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 175 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.440 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+---
+````markdown
+```{r, echo = F}
+library(leaflet)
+leaflet() %&gt;% addTiles() %&gt;% setView(16.904549, 52.426811, zoom = 17)
+```
+````
+
+<div id="htmlwidget-2f589645f0be4a1c5adb" style="width:864px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2f589645f0be4a1c5adb">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[52.426811,16.904549],17,[]]},"evals":[],"jsHooks":[]}</script>
+
+---
+# Composing the document
+
+- RStudio makes easy to start with an R Markdown 
+- .Rmd is the extension for R Markdown, but is just a text file!
+- In this text file you write your document using the markdown notation we just reviewed
+- At the beginning of the document we have to specify some basic information
+
+````markdown
+---
+title: "Introduction to functions"
+author: "Adolfo Alvarez"
+date: '2019-03-29'
+output: html_document
+---
+````
+
+---
+# The same input can produce different outputs by changing just one line!
+
+- html_document
+- pdf_document
+- word_document
+- ioslides_presentation
+- slidy_presentation
+- beamer_presentation
+- powerpoint_presentation
+
+---
+class: inverse, center, middle
+
+# Live example
+
+---
+class: center, middle
+## Advantages of HTML solutions (html, ioslides, slidy)
+
+---
+### Interactive plots
+
+<div id="htmlwidget-7aeacea1b40e7c0fc124" style="width:100%;height:80%;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7aeacea1b40e7c0fc124">{"x":{"url":"seminar_files/figure-html//widgets/widget_unnamed-chunk-5.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+
+---
+### Shiny applications
+&lt;iframe width="1200" height="500" src="http://127.0.0.1:7859" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+### Animated gifs
+
+- Like this one created by the gganimate package
+
+![gganimate](img/gganimate.gif)
+
+---
+### Animated gifs
+
+- Or just for fun!
+
+![Thinking...](img/math.gif)
+
+
+---
+# RMarkdown extensions
+
+.pull-left[
+- RMarkdown is not only for R: Currently the languages supported are R, Python, Julia, Shell, SQL, Rcpp, Stan, Javascript, C, and Fortran.
+- Dashboards with the flexdashboard package. [Example](https://jjallaire.shinyapps.io/shiny-biclust/)
+- Tufte handouts with the tufte package. [Example](https://rstudio.github.io/tufte/)
+- Distill web documents for science reports [Example](https://rstudio.github.io/distill/)
+- Reveal.js presentations with the revealjs package. [Example](https://revealjs.com/#/)
+- Shower presentations with the rmdshower package. [Example](http://mangothecat.github.io/rmdshower/skeleton.html#shower-presentations-with-r-markdown)
+- Remark.js presentations with the xaringan package. Like this one!
+
+]
+
+???
+
+## Hello everyone! Here we see the presenter notes
+
+- Don't forget to click on the links
+- So they can see what is possible with RMarkdown extensions
+- Of course this is also rmarkdown so you can add more stuff to your presenter notes
+
+![](img/shhh.gif)
+
+
+
+--
+
+.pull-right[
+&lt;iframe width="600" height="250" src="file:///home/adolfo/Beyond%20Data%20Analysis/seminar.html#1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+- Pressing `p` you get the presenter mode! 
+]
+
+---
+# RMarkdown extensions
+- CVs with the vitae package. [Example](https://github.com/robjhyndman/CV/blob/master/RobHyndmanCV.pdf)
+
+--
+- Websites with the blogdown package. [Example](https://robjhyndman.com/)
+
+--
+- Packages documentation with the pkgdown package. [Example](https://pkgdown.r-lib.org/)
+
+--
+- Books with the bookdown package. [Example](https://bookdown.org/yihui/rmarkdown/)
+
+--
+- Journal articles with the rticles package. Live example.
+
+---
+# Comparison with other systems
+
+--
+- RMarkdown vs MS Word or MS Powerpoint.
+
+--
+- RMarkdown vs `\(\LaTeX\)`
+
+--
+- RStudio vs Texmaker, TexnicCenter, TexStudio,... 
+  - Pro tip; use "infinite moon reader" for automatic display of HTML.
+
+--
+- RStudio vs Overleaf, Authorea.
+  - Pro tip: Use github.com
+
+---
+# More tips and extensions at:
+
+- [Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- RMarkdown: The definitive guide 
+
+&lt;iframe width="1200" height="600" src="https://bookdown.org/yihui/rmarkdown/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+
+---
+class: center, middle, inverse
+# Other extensions for teaching
+
+
+---
+# Learnr
+
+You can use R markdown to create interative tutorials with the learnr package. The tutorials can be composed on the following elements:
+
+- Narrative, figures, illustrations, and equations.
+- Code exercises (R code chunks that users can edit and execute directly).
+- Quiz questions.
+- Videos (supported services include YouTube and Vimeo).
+- Interactive Shiny components.
+
+---
+# Quick learnr example
+
+---
+#Other resources worth to mention
+
+
+- [Rstudio cloud](https://rstudio.cloud) Start learning with no set up time.
+- [Parametrized R Markdown](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) To make automatic reports
+- [Officer package](https://davidgohel.github.io/officer/index.html) Create more advanced MS Office documents
+- [R exams](http://www.r-exams.org/) Automatic exams generation
+
+---
+class: center, middle
+# Thank you and keep contact!
+
+### adolfo.alvarez@analyx.com
+### twitter.com/adolfoalvarez
+
+.pull-left[
+&lt;img src="img/analyx.png" width="923" /&gt;
+]
+.pull-right[
+&lt;img src="img/davinci.png" width="1435" /&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

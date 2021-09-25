@@ -1,0 +1,77 @@
+---
+title: "Introduction to functions"
+author: "Adolfo Alvarez"
+date: '`r Sys.Date()`'
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition:
+
+> A function $f$ assigns to each element $x$ in some set $S$ a unique element in a set $T$
+
+- The set $S$ is called the **domain** of $f$ or $Dom(f)$
+- For $x$ in $Dom(f)$, $f(x)$ is called the image of $x$ under $f$
+- The set of all images $f(x)$ is a subset of $T$ called the image of $f$, or $Im(f)$
+$$Im(f) = {f(x): x \in Dom(f)}$$
+
+## Some examples 
+
+- $f_1(x) = x^2$
+- $f_2(x) = \sqrt(x)$
+- $f_3(x) = log(x)$
+- $f_4(x) = sin(x)$
+
+Are you familiar with them?
+
+- x is a variable, or input
+- $f(x)$ is the output, which has to be uniquely determined!
+- You need to know what values of x are allowed
+
+## Graphs
+
+The graphical representation of the previous functions are:
+
+## Square function
+
+$f(x) = x^2$
+
+```{r, echo=FALSE, warning=FALSE}
+x <- seq(-3,3,0.01)
+plot(x,x^2, type = "l")
+```
+
+## Square root function 
+
+$f_2(x) = \sqrt(x)$
+
+```{r, echo=FALSE, warning = FALSE}
+plot(x,sqrt(x), type = "l")
+```
+
+## Logarithmic function 
+
+$f_3(x) = log(x)$
+
+```{r, echo=FALSE, warning = FALSE}
+plot(x,log(x), type = "l")
+```
+
+## Exponential function 
+
+$f_4(x) = exp(x)$
+
+```{r, echo=FALSE, warning = FALSE}
+plot(x,exp(x), type = "l")
+```
+
+## Sine function
+
+$f_5(x) = sin(x)$
+
+```{r, echo=FALSE, warning = FALSE}
+plot(x,sin(x), type = "l")
+```

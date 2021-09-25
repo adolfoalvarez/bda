@@ -1,0 +1,49 @@
+---
+title: "ML exercises"
+author: "Adolfo Alvarez"
+date: "1/21/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## exercise 1
+
+```{r}
+library(readr)
+library(dplyr)
+library(tidyverse)
+library(MASS)
+library(caret)
+library(rpart)
+library(party)
+library(randomForest)
+
+training_table <- read_table2("training.txt",col_names = TRUE)
+test_table <-  read_table2("testing.txt",col_names = TRUE)
+
+#Preparing the data
+training_data <- training_table %>% 
+  mutate(Y= ifelse(Y == "\"good\"",1,0),
+         X1 = ifelse(X1 == "\"no\"",2,ifelse(X1 == "\"bad.running\"",0,1)),
+         X3 = ifelse(X3 == "\"pre.good\"",1,0),
+         X4 = ifelse(X4 == "\"personal\"",1,0),
+         X6 = ifelse(X6 == "\"man\"",1,0),
+         X7 = ifelse(X7 == "\"not.alone\"",1,0)) %>%
+  drop_na()
+
+test_data <- test_table %>% 
+  mutate(Y= ifelse(Y == "\"good\"",1,0),
+         X1 = ifelse(X1 == "\"no\"",2,ifelse(X1 == "\"bad.running\"",0,1)),
+         X3 = ifelse(X3 == "\"pre.good\"",1,0),
+         X4 = ifelse(X4 == "\"personal\"",1,0),
+         X6 = ifelse(X6 == "\"man\"",1,0),
+         X7 = ifelse(X7 == "\"not.alone\"",1,0)) %>%
+  drop_na()
+
+training_data <- training_sample
+test_data <- testing_sample
+
+```

@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Adolfo Alvarez"
+date: "1/29/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data preparation task
+
+### Exercise 1
+
+This is the solution
+
+```{r cars}
+a <- c(1,5,6)
+b <- a*2
+b
+```
+
